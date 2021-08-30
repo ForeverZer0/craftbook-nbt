@@ -5,6 +5,6 @@ module CraftBook
 
     ##
     # The version of the craftbook-nbt Gem.
-    VERSION = "0.1.0"
+    VERSION = "1.0.0"
   end
 end
