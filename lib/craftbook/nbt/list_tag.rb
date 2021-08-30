@@ -57,7 +57,9 @@ module CraftBook
 
         klass = Tag.class_from_type(child_type)
         values.each do |value|
-          child = klass.new(nil)
+          child = klass.allocate
+          child.instance_variable_set(:@name, nil)
+          child.instance_variable_set(:@type, child_type)
           child.send(:parse_hash, value)
           push(child)
         end

@@ -18,13 +18,13 @@ module CraftBook
       ##
       # @!attribute [rw] value
       #   The value of the tag. Values of `true` and `false` will be converted to `1` and `0` respectfully.
-      #   @return [Numeric,TrueClass,FalseClass] the value of the tag.
+      #   @return [Numeric,Boolean] the value of the tag.
 
       ##
       # Creates a new instance of the {DoubleTag} class.
       #
       # @param name [String,NilClass] The name of the tag, or `nil` when unnamed.
-      # @param value [Numeric,TrueClass,FalseClass] The value of the tag.
+      # @param value [Numeric,Boolean] The value of the tag.
       #
       # @note Values of `true` and `false` will be converted to `1` and `0` respectfully.
       def initialize(name, value = 0)
@@ -40,7 +40,7 @@ module CraftBook
       end
 
       ##
-      # @return [TrueClass,FalseClass] the value of the tag as boolean.
+      # @return [Boolean] the value of the tag as boolean.
       def bool
         @value != 0
       end

@@ -13,7 +13,7 @@ module CraftBook
 
       ##
       # Creates a new instance of the {TagBuilder} class.
-      # @param name [String] the name of the implicit top-level {CompoundTag} being created.
+      # @param name [String,NilClass] the name of the implicit top-level {CompoundTag} being created.
       def initialize(name)
         @root = CompoundTag.new(name)
         @stack = []
@@ -23,7 +23,7 @@ module CraftBook
       # Creates a new {TagBuilder} instance within a block, returning the completed {CompoundTag} when the block
       # closes.
       #
-      # @param name [String] the name of the implicit top-level {CompoundTag} that the {TagBuilder} is creating.
+      # @param name [String,NilClass] the name of the implicit top-level {CompoundTag} that the {TagBuilder} is creating.
       # @return [CompoundTag] The resulting {CompoundTag} that was created.
       # @raise [LocalJumpError] when called without a block.
       def self.create(name)
@@ -73,105 +73,99 @@ module CraftBook
 
       ##
       # Creates a {ByteTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Integer] The value of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def byte(value, name = nil)
+      def byte(name, value)
         add(ByteTag.new(name, Integer(value)))
       end
 
       ##
       # Creates a {ShortTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Integer] The value of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def short(value, name = nil)
+      def short(name, value)
         add(ShortTag.new(name, Integer(value)))
       end
 
       ##
       # Creates a {IntTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Integer] The value of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def int(value, name = nil)
+      def int(name, value)
         add(IntTag.new(name, Integer(value)))
       end
 
       ##
       # Creates a {LongTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Integer] The value of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def long(value, name = nil)
+      def long(name, value)
         add(LongTag.new(name, Integer(value)))
       end
 
       ##
       # Creates a {FloatTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Float] The value of the tag.
       # @return [self]
-      def float(value, name = nil)
+      def float(name, value)
         add(FloatTag.new(name, Float(value)))
       end
 
       ##
       # Creates a {DoubleTag} from the specified value, and adds it to the current node.
-      # @param value [Numeric] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param value [Float] The value of the tag.
       # @return [self]
-      def double(value, name = nil)
+      def double(name, value)
         add(DoubleTag.new(name, Float(value)))
       end
 
       ##
       # Creates a {StringTag} from the specified value, and adds it to the current node.
       # @param value [String,Object] The value of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def string(value, name = nil)
+      def string(name, value)
         add(StringTag.new(name, String(value)))
       end
 
       ##
       # Creates a {ByteArrayTag} from the specified values, and adds it to the current node.
-      # @param values [Array<Numeric>,Enumerable] The child values of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param values [Array<Integer>,Enumerable] The child values of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def byte_array(values, name = nil)
-        tag = ByteArrayTag.new(name)
-        values.each { |value| tag.push(Integer(value)) }
-        add(tag)
+      def byte_array(name, *values)
+        add(ByteArrayTag.new(name, *values))
       end
 
       ##
       # Creates a {IntArrayTag} from the specified values, and adds it to the current node.
-      # @param values [Array<Numeric>,Enumerable] The child values of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param values [Array<Integer>,Enumerable] The child values of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def int_array(values, name = nil)
-        tag = IntArrayTag.new(name)
-        values.each { |value| tag.push(Integer(value)) }
-        add(tag)
+      def int_array(name, *values)
+        add(IntArrayTag.new(name, *values))
       end
 
       ##
       # Creates a {LongArrayTag} from the specified values, and adds it to the current node.
-      # @param values [Array<Numeric>,Enumerable] The child values of the tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param values [Array<Integer>,Enumerable] The child values of the tag.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @return [self]
-      def long_array(values, name = nil)
-        tag = LongArrayTag.new(name)
-        values.each { |value| tag.push(Integer(value)) }
-        add(tag)
+      def long_array(name, *values)
+        add(LongArrayTag.new(name, *values))
       end
 
       ##
       # Creates a {ListTag} from the specified value, and adds it to the current node.
       #
       # @param child_type [Integer] One of the `Tag::TYPE_*` constants indicating the type of children in this tag.
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @param children [Array<Tag>,Enumerable] The child values of the tag.
       #
       # @overload list(child_type, name = nil, children =nil, &block)
@@ -183,16 +177,13 @@ module CraftBook
       #   When called without a block, all values to be included must be present in the `children` argument.
       #
       # @return [self]
-      def list(child_type, name = nil, children = nil)
-        list = ListTag.new(name, child_type)
-        if children
-          children.each { |child| list.push(child) }
-        end
+      def list(name, child_type, *children)
+        list = ListTag.new(name, child_type, *children)
 
         if block_given?
           @stack.push(list)
           yield
-          @stack.shift
+          @stack.pop
         end
 
         add(list)
@@ -201,7 +192,7 @@ module CraftBook
       ##
       # Creates a {CompoundTag} from the specified value, and adds it to the current node.
       #
-      # @param name [String] The name of the tag, or `nil` when adding to a {ListTag} node.
+      # @param name [String,NilClass] The name of the tag, or `nil` when adding to a {ListTag} node.
       # @param children [Array<Tag>,Enumerable] The child values of the tag.
       #
       # @overload compound(name = nil, children =nil, &block)
@@ -213,16 +204,13 @@ module CraftBook
       #   When called without a block, all values to be included must be present in the `children` argument.
       #
       # @return [self]
-      def compound(name = nil, children = nil)
-        compound = CompoundTag.new(name)
-        if children
-          children.each { |child| compound.push(child) }
-        end
-
+      def compound(name, *children)
+        compound = CompoundTag.new(name, *children)
+        
         if block_given?
           @stack.push(compound)
           yield self
-          @stack.shift
+          @stack.pop
         end
 
         add(compound)

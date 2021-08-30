@@ -25,7 +25,7 @@ module CraftBook
       ##
       # @return [String] the NBT tag as an SNBT string.
       def stringify
-        "#{snbt_prefix}{#{map(&:stringify).join(',')}}"
+        "{#{snbt_prefix}{#{map(&:stringify).join(',')}}"
       end
     end
   end

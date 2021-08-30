@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-require "bundler/gem_tasks"
-require "rake/testtask"
-
-Rake::TestTask.new(:test) do |t|
-  t.libs << "test"
-  t.libs << "lib"
-  t.test_files = FileList["test/**/*_test.rb"]
+task(:lexer) do
+  `rex lib/craftbook/nbt/snbt/snbt.rex -o lib/craftbook/nbt/snbt/lexer.rb`
 end
-
-task default: :test

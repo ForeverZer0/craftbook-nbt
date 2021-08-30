@@ -9,13 +9,13 @@ module CraftBook
 
       ##
       # @!attribute [rw] value
-      #   @return [Numeric] the value of the tag.
+      #   @return [Float] the value of the tag.
 
       ##
       # Creates a new instance of the {DoubleTag} class.
       #
       # @param name [String,NilClass] The name of the tag, or `nil` when unnamed.
-      # @param value [Numeric] The value of the tag.
+      # @param value [Float] The value of the tag.
       def initialize(name, value = 0.0)
         super(TYPE_DOUBLE, name, value)
       end
