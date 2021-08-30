@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['ForeverZer0']
   spec.email         = ['efreed09@gmail.com']
 
-  spec.summary       = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'A feature-rich and complete Ruby implementation of the Named Binary Tag (NBT) format and SNBT parser.'
+  spec.description   = 'A feature-rich and complete Ruby implementation of the Named Binary Tag (NBT) format. While it is an integral part of the broader CraftBook API, it is an independent module with no dependencies, and can be used for any purpose where reading/writing/converting the NBT format is required.'
   spec.homepage      = 'https://github.com/ForeverZer0/craftbook-nbt'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.4.0'

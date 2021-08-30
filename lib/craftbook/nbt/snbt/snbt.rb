@@ -16,6 +16,7 @@ module CraftBook
     #
     # @return [CompoundTag] The parsed {CompoundTag} instance.
     #
+    # @note This method is not safe to call in parallel from multiple threads.
     # @see https://minecraft.fandom.com/wiki/NBT_format#SNBT_format
     def self.parse_snbt(string_nbt)
       raise(ArgumentError, "input string cannot be nil or empty") if string_nbt.nil? || string_nbt.empty?
