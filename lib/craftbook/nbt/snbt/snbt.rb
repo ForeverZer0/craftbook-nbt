@@ -118,10 +118,3 @@ module CraftBook
     end
   end
 end
-
-
-s = File.read('/code/ruby/craftbook-nbt/test/bigtest.snbt')
-CraftBook::NBT.parse_snbt(s).pretty_print
-
-s = '{name1:123,name2:"sometext1",name3:{subname1:456,subname2:"sometext2"}}'
-CraftBook::NBT.parse_snbt(s).pretty_print
